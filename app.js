@@ -14,7 +14,7 @@ require('./dbConfig');
 
 var app = express();
 
-const quizzCode = new CronJob({
+const quizzCodeJob = new CronJob({
   cronTime: '0 1 * * *', // every 24 hours
   onTick: function() {
    quizzCode.generate();
@@ -23,7 +23,7 @@ const quizzCode = new CronJob({
   timezone: "Europe/Madrid"
 });
 
-quizzCode.start();
+quizzCodeJob.start();
 
 app.set('port', 3000);
 
