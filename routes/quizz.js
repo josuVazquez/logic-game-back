@@ -3,8 +3,8 @@ const Quizz = require('../models/Quizz');
 
 router.get('/', (req, res) => {
     Quizz.find().sort('-date')
-        .then(outfit => {
-            res.json(outfit);
+        .then(date => {
+            res.json(date);
         })
         .catch(error => {
             res.json(error);

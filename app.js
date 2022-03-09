@@ -14,7 +14,7 @@ require('./dbConfig');
 
 var app = express();
 
-const checkBookingStatus = new CronJob({
+const quizzCode = new CronJob({
   cronTime: '0 1 * * *', // every 24 hours
   onTick: function() {
    quizzCode.generate();
@@ -22,6 +22,8 @@ const checkBookingStatus = new CronJob({
   start: true,
   timezone: "Europe/Madrid"
 });
+
+quizzCode.start();
 
 app.set('port', 3000);
 
