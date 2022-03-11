@@ -7,20 +7,15 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var quizzCode = require('./scheduleJobs/quizzCode');
 var quizzRouter = require('./routes/quizz');
-const CronJob = require('cron').CronJob;
+const cron = require('node-cron');
 const cors = require('cors');
 
 require('./dbConfig');
 
 var app = express();
 
-const quizzCodeJob = new CronJob({
-  cronTime: '0 1 * * *', // every 24 hours
-  onTick: function() {
+const quizzCodeJob = cron.schedule('24 * * * *', () => {
    quizzCode.generate();
-  },
-  start: true,
-  timezone: "Europe/Madrid"
 });
 
 quizzCodeJob.start();
