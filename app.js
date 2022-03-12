@@ -16,7 +16,9 @@ var app = express();
 
 const quizzCodeJob = cron.schedule('00 00 * * *', () => {
    quizzCode.generate();
-});
+  },
+  {timezone: 'UTC'}
+);
 
 quizzCodeJob.start();
 
