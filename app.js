@@ -14,7 +14,7 @@ require('./dbConfig');
 
 var app = express();
 
-const quizzCodeJob = cron.schedule('24 * * * *', () => {
+const quizzCodeJob = cron.schedule('00 00 * * *', () => {
    quizzCode.generate();
 });
 
