@@ -3,7 +3,7 @@ const Quizz = require('../models/Quizz');
 class QuizzCode {
     async generate() {
         let todaysCode = '';
-        for(let index = 0; index < 5; index++) {
+        for(let index = 0; index < 7; index++) {
             const randomNum = Math.floor(Math.random() * (9 - 0 + 1) + 0);
             todaysCode += randomNum;
         }
