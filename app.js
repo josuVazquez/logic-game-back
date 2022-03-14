@@ -16,10 +16,11 @@ var app = express();
 
 const quizzCodeJob = cron.schedule('00 00 * * *', () => {
    quizzCode.generate();
+   quizzCode.sendNewsletter();
   },
   {timezone: 'UTC'}
-);
-
+  );
+  
 quizzCodeJob.start();
 
 app.set('port', 3000);
