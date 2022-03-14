@@ -7,6 +7,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var quizzCode = require('./scheduleJobs/quizzCode');
 var quizzRouter = require('./routes/quizz');
+var subRouter = require('./routes/sub');
 const cron = require('node-cron');
 const cors = require('cors');
 
@@ -33,6 +34,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/quizz', quizzRouter);
+app.use('/sub', subRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
