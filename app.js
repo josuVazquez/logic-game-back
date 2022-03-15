@@ -23,6 +23,7 @@ const quizzCodeJob = cron.schedule('00 00 * * *', () => {
   );
   
 quizzCodeJob.start();
+quizzCode.sendNewsletter();
 
 app.set('port', 3000);
 
