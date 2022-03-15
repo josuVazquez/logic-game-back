@@ -12,12 +12,18 @@ router.get('/', (req, res) => {
     });
 });
 
-router.get('/create', (req, res) => {
+router.post('/create', async (req, res) => {
     try {
-        quizzCode.generate();
+        await quizzCode.generate();
         quizzCode.sendNewsletter();
+        res.status(200);
+        res.json({});
     } catch(error) {
-        console.error(error);
+        res.status(err.status || 500);
+        res.json({
+            message: err.message,
+            error: err
+        });
     }
 });
 

@@ -16,6 +16,7 @@ class QuizzCode {
             const randomNum = Math.floor(Math.random() * (9 - 0 + 1) + 0);
             todaysCode += randomNum;
         }
+        console.log(todaysCode);
         const newItem = await Quizz.create({ code: todaysCode, date: new Date() });
         console.log(newItem);
 	}
@@ -24,8 +25,8 @@ class QuizzCode {
         const allSubscriptions = await Sub.find();
         const notificationPayload = {
             "notification": {
-                "title": "Angular News",
-                "body": "Newsletter Available!",
+                "title": "Quizz Game",
+                "body": "New quizz available",
                 "icon": "assets/main-page-logo-small-hat.png",
                 "vibrate": [100, 50, 100],
                 "data": {
