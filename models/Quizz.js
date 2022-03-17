@@ -5,9 +5,9 @@ const quizzSchema = new Schema({
     date: {
         type: Date,
     },
-    code: {
+    codes: [{
         type: String
-    }
+    }]
 });
 
 module.exports = mongoose.model('quizz', quizzSchema);

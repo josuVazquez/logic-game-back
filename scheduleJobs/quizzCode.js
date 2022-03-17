@@ -11,13 +11,16 @@ webpush.setVapidDetails(
 class QuizzCode {
 
     async generate() {
-        let todaysCode = '';
-        for(let index = 0; index < 7; index++) {
-            const randomNum = Math.floor(Math.random() * (9 - 0 + 1) + 0);
-            todaysCode += randomNum;
+        const todaysCodes = [];
+        for(let i = 0; i < 7; i++) {
+            let currentCode = '';
+            for(let index = 0; index < 7; index++) {
+                const randomNum = Math.floor(Math.random() * (9 - 0 + 1) + 0);
+                currentCode += randomNum;
+            }
+            todaysCodes.push(currentCode);
         }
-        console.log(todaysCode);
-        const newItem = await Quizz.create({ code: todaysCode, date: new Date() });
+        const newItem = await Quizz.create({ codes: todaysCodes, date: new Date() });
         console.log(newItem);
 	}
 
