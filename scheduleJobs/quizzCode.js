@@ -20,13 +20,14 @@ class QuizzCode {
             }
             todaysCodes.push(currentCode);
         }
-        const newItem = await Quizz.create({ codes: todaysCodes, date: new Date(), disorderCodes: disorderArray(todaysCodes) });
+        console.log(todaysCodes);
+        const newItem = await Quizz.create({ codes: todaysCodes, date: new Date(), disorderCodes: this.disorderArray([...todaysCodes]) });
         console.log(newItem);
 	}
 
     disorderArray(arr) {
         const codes = arr.join('').split('');
-    
+        console.log(codes);
         let currentIndex = codes.length;
         const res = [];
     
@@ -37,9 +38,10 @@ class QuizzCode {
             codes[randomIndex], codes[currentIndex]];
         }
         for(let i = 0; i < codes.length; i ++) {
-          const actualPosition = i * this.difficulty;
-          res.push(codes.slice(actualPosition, actualPosition + this.difficulty).join(''));
+          const actualPosition = i * 7;
+          res.push(codes.slice(actualPosition, actualPosition + 7).join(''));
         }
+        console.log(res.filter( ar => ar));
         return res.filter( ar => ar);
     }
 
