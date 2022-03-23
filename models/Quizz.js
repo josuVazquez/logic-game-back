@@ -7,6 +7,9 @@ const quizzSchema = new Schema({
     },
     codes: [{
         type: String
+    }],
+    disorderCodes: [{
+        type: String
     }]
 });
 

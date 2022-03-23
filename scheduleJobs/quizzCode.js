@@ -20,9 +20,28 @@ class QuizzCode {
             }
             todaysCodes.push(currentCode);
         }
-        const newItem = await Quizz.create({ codes: todaysCodes, date: new Date() });
+        const newItem = await Quizz.create({ codes: todaysCodes, date: new Date(), disorderCodes: disorderArray(todaysCodes) });
         console.log(newItem);
 	}
+
+    disorderArray(arr) {
+        const codes = arr.join('').split('');
+    
+        let currentIndex = codes.length;
+        const res = [];
+    
+        while (currentIndex !== 0) {
+          const randomIndex = Math.floor(Math.random() * currentIndex);
+          currentIndex--;
+          [codes[currentIndex], codes[randomIndex]] = [
+            codes[randomIndex], codes[currentIndex]];
+        }
+        for(let i = 0; i < codes.length; i ++) {
+          const actualPosition = i * this.difficulty;
+          res.push(codes.slice(actualPosition, actualPosition + this.difficulty).join(''));
+        }
+        return res.filter( ar => ar);
+    }
 
     async sendNewsletter() {
         const allSubscriptions = await Sub.find();
