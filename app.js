@@ -8,6 +8,7 @@ var logger = require('morgan');
 var quizzCode = require('./scheduleJobs/quizzCode');
 var quizzRouter = require('./routes/quizz');
 var subRouter = require('./routes/sub');
+var rankingRouter = require('./routes/ranking');
 const cron = require('node-cron');
 const cors = require('cors');
 
@@ -35,6 +36,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/quizz', quizzRouter);
 app.use('/sub', subRouter);
+app.use('/ranking', rankingRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
